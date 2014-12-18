@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="congressApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tennessee Congressional District Finder</title>
+  </script>
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+ <h1>Tennessee Congressional District Finder</h1>
+
+ <div class="container">
+    <form name="getLocate" ng-controller="LocateDistrictController as locate" ng-submit="getLocate.$valid && locate.findNewAddress()" novalidate>
+      <label>Enter Your Complete Address</label>
+      <div class="form-group">
+        <label class="control-label">Street Address:</label>
+        <input class="form-control" id="street" type="text" ng-model="locate.newAddress.street" required>
+        <label class="control-label">City:</label>
+        <input class="form-control" id="city" type="text" ng-model="locate.newAddress.city" required>
+        <label class="control-label">State:</label>
+        <input class="form-control" id="state" type="text" ng-model="locate.newAddress.state" required>
+        <label class="control-label">Zipcode:</label>
+        <input class="form-control" id="zipcode" type="text" ng-model="locate.newAddress.zipcode" required>
+        <input type="submit" id="location" value="Search For Your District">
+      </div>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>congressman name</th>
+          <th>congressman phone</th>
+          <th>congressman website</th>
+          <th>congressman bio</th>
+          <th>congressman twitteer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>{{task.name}}</td>
+          <td>{{task.desc}}</td>
+          <td>{{task.due | date}}</td>
+          <td>{{task.priority}}</td>
+          <td><button ng-click="todoCtrl.removeTodo(taskId)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class>
+
+  </div>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="scripts/controller.js"></script>
+<script src="scripts/factories.js"></script>
+<script src="scripts/module.js"></script>
+<script src="scripts/module.js"></script>
+<script src="scripts/main.js"></script>
+</html>

@@ -1,0 +1,16 @@
+h1 {
+  margin: 50px auto;
+  text-align: center;
+}
+div {
+  margin: auto;
+}
+.container {
+  width: 500px;
+}
+form, label, input {
+  display: inline-block;
+}
+input {
+  width: 50px;
+}
