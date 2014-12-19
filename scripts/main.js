@@ -8,7 +8,7 @@
     var url = 'http://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
      $http.get(url)
     .success(function(data){
-      a.geoloced = (data);
+      a.geoLocate = data;
       var lat = data.results[0].locations[0].latLng.lat;
       var lng = data.results[0].locations[0].latLng.lng;
       a.districtName(lat, lng);
@@ -26,7 +26,7 @@
     var url = begin + lat + middle + lng + end;
     $http.get(url)
     .success(function(data){
-      a.district = (data);
+      a.district = data.results[0].district;
       var district = data.results[0].district;
       var state = data.results[0].state;
       console.log(state + district);
@@ -41,13 +41,10 @@
     var middle = '&longitude=';
     var end = '&apikey=996b297956f34029b3074b37010cf488';
     var url = begin + lat + middle + lng + end;
+    a.items = {};
     $http.get(url)
     .success(function(data){
-      a.representative = (data);
-      console.log(data);
-    a.congress {
-      name:
-    }
+      a.items = data.results[0];
     })
     .error(function(err){
       console.log(err);

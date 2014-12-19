@@ -12,8 +12,8 @@
 <body>
  <h1>Tennessee Congressional District Finder</h1>
 
- <div class="container">
-    <form name="getLocate" ng-controller="LocateDistrictController as locate" ng-submit="getLocate.$valid && locate.findNewAddress()" novalidate>
+ <div class="container" ng-controller="LocateDistrictController as locate">
+    <form name="getLocate" ng-submit="getLocate.$valid && locate.findNewAddress()" novalidate>
       <label>Enter Your Complete Address</label>
       <div class="form-group">
         <label class="control-label">Street Address:</label>
@@ -27,31 +27,12 @@
         <input type="submit" id="location" value="Search For Your District">
       </div>
     </form>
-    <table>
-      <thead>
-        <tr>
-          <th>congressman name</th>
-          <th>congressman phone</th>
-          <th>congressman website</th>
-          <th>congressman bio</th>
-          <th>congressman twitteer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td>{{task.name}}</td>
-          <td>{{task.desc}}</td>
-          <td>{{task.due | date}}</td>
-          <td>{{task.priority}}</td>
-          <td><button ng-click="todoCtrl.removeTodo(taskId)">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class>
-
-  </div>
+    <table name="representative">
+       <tr ng-repeat="(key, value) in locate.items">
+          <th>{{key}}</th>
+          <td>{{value}}</td>
+      </tr>
+    </div>
 </body>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
