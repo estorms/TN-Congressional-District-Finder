@@ -5,7 +5,7 @@
     var a = this;
 //grab geolocation information
   a.findNewAddress = function(data) {
-    var url = 'http://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
+    var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
      $http.get(url)
     .success(function(data){
       a.geoLocate = data;
@@ -44,7 +44,10 @@
     a.items = {};
     $http.get(url)
     .success(function(data){
-      a.items = data.results[0];
+      data = data.results[0];
+      var fullName = data.first_name + " " + data.last_name ;
+      a.items["fullName"] = fullName;
+      console.log(a.items);
     })
     .error(function(err){
       console.log(err);
