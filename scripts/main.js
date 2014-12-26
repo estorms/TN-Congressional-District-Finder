@@ -1,6 +1,11 @@
 ;(function() {
   'use strict';
-  angular.module('congressApp', [])
+ angular.module('congressApp', ['uiGmapgoogle-maps'])
+  .controller('MapController', function($scope) {
+
+  $scope.map = { center: { latitude: 36.1667, longitude: -86.7833 }, zoom: 8, minZoom: 8, draggable: false,  };
+
+})
   .controller('LocateDistrictController', function($http) {
     var a = this;
 //grab geolocation information
@@ -45,14 +50,25 @@
     $http.get(url)
     .success(function(data){
       data = data.results[0];
+      var website = data.website;
+      var phone = data.phone;
+      var fax = data.fax;
+      var youTube = data.youtube_id;
+      var twitter = data.twitter_id;
+      var email = data.oc_email;
       var fullName = data.first_name + " " + data.last_name ;
-      a.items["fullName"] = fullName;
-      console.log(a.items);
+      a.items['fullName'] = fullName;
+      a.items['website'] = website;
+      a.items['email'] = email;
+      a.items['youTube'] = youTube;
+      a.items['twitter'] = twitter;
+      a.items['phone'] = phone;
+      a.items['fax'] = fax;
+      console.log(data);
     })
     .error(function(err){
       console.log(err);
     });
   };
-
-  });
+});
 }());

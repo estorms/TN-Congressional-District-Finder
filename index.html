@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tennessee Congressional District Finder</title>
   </script>
-  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -32,17 +32,21 @@
           <td>{{key}}</td>
           <td>{{value}}</td>
       </tr>
-    </div>
+    </table>
+  </div>
+  <div class="container" ng-controller="MapController as map">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" minZoom="map.minZoom" draggable="false">
+    </ui-gmap-google-map>
+  </div>
 </body>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ0mm1UHnl_O-PPk4WrqWoUgT7LkmiJ00'></script>
+ <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src="scripts/controller.js"></script>
-<script src="scripts/factories.js"></script>
-<script src="scripts/module.js"></script>
-<script src="scripts/module.js"></script>
+<script src='bower_components/lodash/dist/lodash.min.js'></script>
+<script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
 <script src="scripts/main.js"></script>
 </html>
