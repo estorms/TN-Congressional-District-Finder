@@ -11,8 +11,12 @@
 </head>
 <body>
  <h1>Tennessee Congressional District Finder</h1>
-
- <div class="container" ng-controller="LocateDistrictController as locate">
+ <div class="container-fluid" ng-controller="MapController as map">
+   <ui-gmap-google-map center="map.center" zoom="map.zoom" minZoom="map.minZoom" draggable="map.draggable" cursor="map.cursor" keyboardShortcuts="map.keyboardShortcuts">
+     <ui-gmap-layer type="FusionTablesLayer" show="map.fusionlayer.showFusionTables" options="map.fusionlayer.options"></layer>
+     </ui-gmap-google-map>
+   </div>
+ <div class="container-fluid" ng-controller="LocateDistrictController as locate">
     <form name="getLocate" ng-submit="getLocate.$valid && locate.findNewAddress()" novalidate>
       <label>Enter Your Complete Address</label>
       <div class="form-group">
@@ -34,10 +38,6 @@
       </tr>
     </table>
   </div>
-  <div class="container" ng-controller="MapController as map">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" minZoom="map.minZoom" draggable="false">
-    </ui-gmap-google-map>
-  </div>
 </body>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ0mm1UHnl_O-PPk4WrqWoUgT7LkmiJ00'></script>
  <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -48,5 +48,6 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src='bower_components/lodash/dist/lodash.min.js'></script>
 <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+<script src="scripts/state.json"></script>
 <script src="scripts/main.js"></script>
 </html>

@@ -2,9 +2,16 @@
   'use strict';
  angular.module('congressApp', ['uiGmapgoogle-maps'])
   .controller('MapController', function($scope) {
-
-  $scope.map = { center: { latitude: 36.1667, longitude: -86.7833 }, zoom: 8, minZoom: 8, draggable: false,  };
-
+  $scope.map = { center: { latitude: 35.78528, longitude: -86.617504 }, options: { minZoom: 7, draggable: false, cursor: false}, zoom: 7, fusionlayer: {
+    showFusionTables: true,
+    options: {
+      query: {
+        select: '\'color\'',
+        from: '1SQqYHvfYPSeseU6NkjIEAR4_wclKpgaGW3Fwbi66'
+      }
+    }
+}
+};
 })
   .controller('LocateDistrictController', function($http) {
     var a = this;
