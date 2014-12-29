@@ -32,13 +32,16 @@
       </div>
     </form>
     <table name="representative">
-       <tr ng-repeat="(key, value) in locate.items">
-          <td>{{key}}</td>
-          <td>{{value}}</td>
+      <tr ng-repeat="(key, value) in locate.items">
+        <td>{{key}}</td>
+        <td>{{value}}</td>
       </tr>
     </table>
+    <div name="redirect">
+      <a class="btn btn-primary" href="">Your District</a>
+      <a class="btn btn-primary" href="">New Search</a>
+    </div>    
   </div>
-</body>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ0mm1UHnl_O-PPk4WrqWoUgT7LkmiJ00'></script>
  <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -46,8 +49,11 @@
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src='bower_components/lodash/dist/lodash.min.js'></script>
-<script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js'></script>
-<script src="scripts/state.json"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+<script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
 <script src="scripts/main.js"></script>
+<script src="scripts/controller.js"></script>
+<script src="scripts/factories.js"></script>
+
+</body>
 </html>
