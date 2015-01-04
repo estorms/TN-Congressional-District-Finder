@@ -15,14 +15,24 @@ form, label, input {
 input {
   width: 50px;
 }
+table {
+  width: 500px;
+  height: 400px;
+}
  tr {
   display: inline-block;
-  height: 25px;
-  width: 80%;
-  margin: 10px;
+  margin: 1px;
 }
+
 td {
   display: inline-block;
+  width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  height: 50px;
+
+
 }
 .container-fluid { margin: 20px 100px;}
 .angular-google-map, .angular-google-map-container { height: 300px; }

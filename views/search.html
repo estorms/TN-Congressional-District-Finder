@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <form name="getLocate" ng-submit="getLocate.$valid && locate.findNewAddress() && locate.findBio()" novalidate>
+    <label>Enter Your Complete Address</label>
+    <div class="form-group">
+      <label class="control-label">Street Address:</label>
+      <input class="form-control" id="street" type="text" ng-model="locate.newAddress.street" required>
+      <label class="control-label">City:</label>
+      <input class="form-control" id="city" type="text" ng-model="locate.newAddress.city" required>
+      <label class="control-label">State:</label>
+      <input class="form-control" id="state" type="text" ng-model="locate.newAddress.state" required>
+      <label class="control-label">Zipcode:</label>
+      <input class="form-control" id="zipcode" type="text" ng-model="locate.newAddress.zipcode" required>
+      <input type="submit" id="location" value="Search For Your District">
+    </div>
+  </form>
+</div>

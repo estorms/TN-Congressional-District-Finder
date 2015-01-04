@@ -6,29 +6,67 @@ angular.module('congressApp')
     showFusionTables: true,
     options: {
       query: {
-        select: '\'color\'',
-        from: '1SQqYHvfYPSeseU6NkjIEAR4_wclKpgaGW3Fwbi66'
-      }
+        select: 'geometry',
+        from: '1sYcr1mE6VNXK1kfVhvI4ZefLYCqZ7U3SUoTuFvZV'
+      },
+     styles: [{
+    polygonOptions: {
+      borderColor: 'black',
+      borderWidth: '10px',
+      borderOpacity: 1.0,
     }
+  }
+// {
+//   where: 'Representatives-party = Democrat',
+//     polygonOptions: {
+//     fillOpacity: 0.5,
+//     fillColor: '#232323'
+//   }
+],
+}
   }
 };
 })
-.controller('LocateDistrictController', function($http, findLatLng) {
-  var lat;
-  var lng;
- findLatLng.geoLocate(function(data, url) {
-   var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + locate.newAddress.street +',"city": ' + locate.newAddress.city +',"state": ' + locate.newAddress.state +',"postalCode": ' + locate.newAddress.zipcode +'}}';
-    data = data;
-    lat = data.results[0].locations[0].latLng.lat;
-    lng = data.results[0].locations[0].latLng.lng;
-  });
+.controller('LocateDistrictController', function($http, $location, $routeParams) {
   var a = this;
-  a.newThing = function(lat, lng) {
+  a.items = {};
+  //grab geolocation information
+  a.findNewAddress = function() {
+    var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
+    $http.get(url)
+    .success(function(data){
+      data = data;
+     var lat = data.results[0].locations[0].latLng.lat;
+     var lng = data.results[0].locations[0].latLng.lng;
+     a.findNew(lat,lng);
+     a.findCongressman(lat,lng);
+      console.log(a.items);
+    })
+    .error(function(err){
+      console.log(err);
+    });
+  };
+  //use geolocation lat and lng to get district information.
+  a.findNew = function(lat, lng) {
+    var begin = 'https://congress.api.sunlightfoundation.com/districts/locate?latitude=';
+    var middle = '&longitude=';
+    var end = '&apikey=996b297956f34029b3074b37010cf488';
+    var url = begin + lat + middle + lng + end;
+    $http.get(url)
+    .success(function(data){
+      var district = data.results[0].state + '-' + data.results[0].district;
+      a.photoBio(district);
+      console.log(district);
+    })
+    .error(function(err){
+      console.log(err);
+    });
+  };
+  a.findCongressman = function(lat, lng) {
     var begin = 'https://congress.api.sunlightfoundation.com/legislators/locate?latitude=';
     var middle = '&longitude=';
     var end = '&apikey=996b297956f34029b3074b37010cf488';
     var url = begin + lat + middle + lng + end;
-    a.items = {};
     $http.get(url)
     .success(function(data){
       data = data.results[0];
@@ -46,11 +84,31 @@ angular.module('congressApp')
       a.items['twitter'] = twitter;
       a.items['phone'] = phone;
       a.items['fax'] = fax;
-      console.log(data);
+      console.log(a.items);
     })
     .error(function(err){
       console.log(err);
     });
   };
+a.photoBio = function(district) {
+  var firebase = 'https://congressmanfinder.firebaseio.com/district/districts/';
+  var url = firebase + district +'/' + '.json';
+  $http.get(url)
+  .success(function(data){
+    data = data;
+    var biography = data.Biography;
+    var counties = data.Counties;
+    var elected = data.Elected;
+    var image = data.Photo;
+    a.items['biography'] = biography;
+    a.items['counties'] = counties;
+    a.items['elected'] = elected;
+    a.items['image'] = image;
+  })
+  .error(function(err){
+    console.log(err);
+  });
+};
+
 });
 }());
