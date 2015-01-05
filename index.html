@@ -9,17 +9,23 @@
   <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
   <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
+<body ng-controller="LocateDistrictController as locate">
+ <div class="page-header">
+ <div class="row">
+ <div class="col-md-3">
+ <img src="images/tennessee_flag.png">
+ </div>
+ <div class="col-md-6">
  <h1>Tennessee Congressional District Finder</h1>
- <!-- <div class="map">
- <iframe width="875" height="325" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col5+from+1sYcr1mE6VNXK1kfVhvI4ZefLYCqZ7U3SUoTuFvZV+where+col3+in+(&#39;TN-01&#39;%2C+&#39;TN-02&#39;%2C+&#39;TN-03&#39;%2C+&#39;TN-04&#39;%2C+&#39;TN-05&#39;%2C+&#39;TN-06&#39;%2C+&#39;TN-07&#39;%2C+&#39;TN-08&#39;%2C+&#39;TN-09&#39;)&amp;viz=MAP&amp;h=false&amp;lat=35.51829937340292&amp;lng=-86.31917517187503&amp;t=1&amp;z=7&amp;l=col5&amp;y=2&amp;tmplt=2&amp;hml=KML"></iframe>
- </div> -->
-  <div class="container-fluid" ng-controller="MapController as map">
-   <ui-gmap-google-map center="map.center" zoom="map.zoom" minZoom="map.minZoom" draggable="map.draggable" cursor="map.cursor" keyboardShortcuts="map.keyboardShortcuts">
-     <ui-gmap-layer type="FusionTablesLayer" show="map.fusionlayer.showFusionTables" options="map.fusionlayer.options" styles="map.fusionlayer.styles"></layer>
-     </ui-gmap-google-map>
-   </div>
-  <div ng-view ng-controller="LocateDistrictController as locate"></div>
+ </div>
+ <div class="col-md-3">
+ <img src="images/tennessee-seal.png">
+ </div>
+ </div>
+ </div>
+
+
+  <div ng-view></div>
 
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ0mm1UHnl_O-PPk4WrqWoUgT7LkmiJ00'></script>
  <script src="bower_components/jquery/dist/jquery.min.js"></script>

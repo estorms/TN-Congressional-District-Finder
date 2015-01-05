@@ -1,9 +1,9 @@
-<table class="table table-hover">
- <div>
-  <ul ng-repeat="(key, value) in locate.items">
-    <li>{{key}}</li>
-    <li>{{value}}</li>
-  </ul>
+ <div class="container">
+ <div class="row">
+    <p>Representative: {{locate.items.fullName}}</p>
+    <img ng-src="{{locate.items.image}}">
+    <img src="{{locate.items.map}}">
+  </div>
 </div>
 <div name="redirect">
   <a class="btn btn-primary" href="">Your District</a>

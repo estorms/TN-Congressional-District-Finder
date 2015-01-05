@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <form name="getLocate" ng-submit="getLocate.$valid && locate.findNewAddress() && locate.findBio()" novalidate>
-    <label>Enter Your Complete Address</label>
+  <form class="form-inline" name="getLocate" ng-submit="getLocate.$valid && locate.findNewAddress()" novalidate>
+    <label>Search For Your Congressman</label>
     <div class="form-group">
       <label class="control-label">Street Address:</label>
       <input class="form-control" id="street" type="text" ng-model="locate.newAddress.street" required>
@@ -10,7 +10,12 @@
       <input class="form-control" id="state" type="text" ng-model="locate.newAddress.state" required>
       <label class="control-label">Zipcode:</label>
       <input class="form-control" id="zipcode" type="text" ng-model="locate.newAddress.zipcode" required>
-      <input type="submit" id="location" value="Search For Your District">
+      <input type="submit" class="btn btn-primary" id="location" value="Search For Your District">
     </div>
   </form>
 </div>
+<div class="container-fluid" ng-controller="MapController as map">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" minZoom="map.minZoom" draggable="map.draggable" cursor="map.cursor" keyboardShortcuts="map.keyboardShortcuts">
+    <ui-gmap-layer type="FusionTablesLayer" show="map.fusionlayer.showFusionTables" options="map.fusionlayer.options" styles="map.fusionlayer.styles"></layer>
+    </ui-gmap-google-map>
+  </div>

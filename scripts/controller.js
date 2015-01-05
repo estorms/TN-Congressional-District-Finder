@@ -1,6 +1,6 @@
 ;(function() {
   'use strict';
-angular.module('congressApp')
+ angular.module('congressApp')
 .controller('MapController', function($scope) {
   $scope.map = { center: { latitude: 35.78528, longitude: -86.617504 }, options: { minZoom: 7, draggable: false, cursor: false}, zoom: 7, fusionlayer: {
     showFusionTables: true,
@@ -9,20 +9,6 @@ angular.module('congressApp')
         select: 'geometry',
         from: '1sYcr1mE6VNXK1kfVhvI4ZefLYCqZ7U3SUoTuFvZV'
       },
-     styles: [{
-    polygonOptions: {
-      borderColor: 'black',
-      borderWidth: '10px',
-      borderOpacity: 1.0,
-    }
-  }
-// {
-//   where: 'Representatives-party = Democrat',
-//     polygonOptions: {
-//     fillOpacity: 0.5,
-//     fillColor: '#232323'
-//   }
-],
 }
   }
 };
@@ -30,23 +16,23 @@ angular.module('congressApp')
 .controller('LocateDistrictController', function($http, $location, $routeParams) {
   var a = this;
   a.items = {};
-  //grab geolocation information
-  a.findNewAddress = function() {
-    var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
+  a.findNewAddress = function(data) {
+    var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
     .success(function(data){
       data = data;
      var lat = data.results[0].locations[0].latLng.lat;
      var lng = data.results[0].locations[0].latLng.lng;
-     a.findNew(lat,lng);
-     a.findCongressman(lat,lng);
-      console.log(a.items);
+      a.findNew(lat,lng);
+      a.findCongressman(lat,lng);
+      $location.path('/new/');
     })
     .error(function(err){
       console.log(err);
     });
   };
-  //use geolocation lat and lng to get district information.
+
+//  use geolocation lat and lng to get district information.
   a.findNew = function(lat, lng) {
     var begin = 'https://congress.api.sunlightfoundation.com/districts/locate?latitude=';
     var middle = '&longitude=';
@@ -55,7 +41,7 @@ angular.module('congressApp')
     $http.get(url)
     .success(function(data){
       var district = data.results[0].state + '-' + data.results[0].district;
-      a.photoBio(district);
+      a.bioPhoto(district);
       console.log(district);
     })
     .error(function(err){
@@ -90,7 +76,7 @@ angular.module('congressApp')
       console.log(err);
     });
   };
-a.photoBio = function(district) {
+a.bioPhoto = function(district) {
   var firebase = 'https://congressmanfinder.firebaseio.com/district/districts/';
   var url = firebase + district +'/' + '.json';
   $http.get(url)
@@ -100,15 +86,20 @@ a.photoBio = function(district) {
     var counties = data.Counties;
     var elected = data.Elected;
     var image = data.Photo;
+    var map = data.map;
     a.items['biography'] = biography;
     a.items['counties'] = counties;
     a.items['elected'] = elected;
     a.items['image'] = image;
+    a.items['map'] = map;
+
   })
   .error(function(err){
     console.log(err);
   });
 };
-
+// a.map = function(district) {
+//    switch {district}
+// }
 });
 }());

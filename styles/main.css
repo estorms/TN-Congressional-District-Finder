@@ -2,37 +2,24 @@ html, body {
   height: 100%;
 }
 h1 {
-  margin: 50px auto;
   text-align: center;
+  opacity: 1.0;
+  font-weight: bold;
 }
 div {
   margin: auto;
 }
-
-form, label, input {
-  display: inline-block;
+#zipcode {
+  width: 75px;
 }
-input {
-  width: 50px;
+#state {
+  width: 125px;
 }
-table {
-  width: 500px;
-  height: 400px;
-}
- tr {
-  display: inline-block;
-  margin: 1px;
+.page-header {
+  height: 180px;
+  background-color: #4633F2;
+  margin-top: 0;
 }
 
-td {
-  display: inline-block;
-  width: 100px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  height: 50px;
-
-
-}
 .container-fluid { margin: 20px 100px;}
 .angular-google-map, .angular-google-map-container { height: 300px; }
