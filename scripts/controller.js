@@ -12,12 +12,13 @@
 }
   }
 };
+
 })
 .controller('LocateDistrictController', function($http, $location, $routeParams) {
   var a = this;
   a.items = {};
   a.findNewAddress = function(data) {
-    var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
+      var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
     .success(function(data){
       data = data;
@@ -26,12 +27,18 @@
       a.findNew(lat,lng);
       a.findCongressman(lat,lng);
       $location.path('/new/');
+      a.clearForm();
     })
     .error(function(err){
       console.log(err);
     });
   };
-
+    a.clearForm = function() {
+      a.newAddress.street = '';
+      a.newAddress.state = '';
+      a.newAddress.zipcode = '';
+      a.newAddress.city = '';
+    };
 //  use geolocation lat and lng to get district information.
   a.findNew = function(lat, lng) {
     var begin = 'https://congress.api.sunlightfoundation.com/districts/locate?latitude=';
@@ -41,6 +48,7 @@
     $http.get(url)
     .success(function(data){
       var district = data.results[0].state + '-' + data.results[0].district;
+      a.items['district'] = district;
       a.bioPhoto(district);
       console.log(district);
     })

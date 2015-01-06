@@ -1,17 +1,25 @@
- <div class="container-fluid">
- <div class="row">
-    <div class="headmap">
-      <img class="col-lg-4 offset-2 centered" ng-src="{{locate.items.image}}">
-      <img class="col-lg-4 offset-2 centered" ng-src="{{locate.items.map}}" id="map">
+<h2>{{locate.items.district}} Congressional Representative</h2>
+<div class="container">
+<div class="row">
+  <h3 class="col-lg-3">Representative {{locate.items.fullName}}</h3>
+  <h3 class="col-lg-7"> {{locate.items.district}} District Map</h3>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3">
+      <img ng-src="{{locate.items.image}}" id="image">
+      <p>First Elected: {{locate.items.elected}}</p>
+    </div>
+    <div class="col-lg-5">
+      <img ng-src="{{locate.items.map}}" id="map">
+      <p>Counties Served: {{locate.items.counties}}</p>
+    </div>
     </div>
   </div>
-
 </div>
 <div class="container">
-  Representative: <p>{{locate.items.fullName}}</p>
-  <p>{{locate.items.biography}}</p>
-  <p>Counties Served: {{locate.items.counties}}</p>
-  <p>First Elected: {{locate.items.elected}}</p>
+
+  <p>Biography: {{locate.items.biography}}</p>
 </div>
 <div name="redirect">
   <a class="btn btn-primary" href="">Your District</a>
