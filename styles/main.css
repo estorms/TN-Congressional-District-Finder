@@ -6,9 +6,7 @@ h1 {
   opacity: 1.0;
   font-weight: bold;
 }
-div {
-  margin: auto;
-}
+
 #zipcode {
   width: 75px;
 }
@@ -19,6 +17,15 @@ div {
   height: 180px;
   background-color: #4633F2;
   margin-top: 0;
+}
+#map {
+  border-width: 2px;
+  border-color: black;
+  border-style: groove;
+  background-color: blue;
+}
+#headmap {
+  margin: auto;
 }
 
 .container-fluid { margin: 20px 100px;}

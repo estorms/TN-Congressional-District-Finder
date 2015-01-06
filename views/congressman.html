@@ -1,9 +1,17 @@
- <div class="container">
+ <div class="container-fluid">
  <div class="row">
-    <p>Representative: {{locate.items.fullName}}</p>
-    <img ng-src="{{locate.items.image}}">
-    <img src="{{locate.items.map}}">
+    <div class="headmap">
+      <img class="col-lg-4 offset-2 centered" ng-src="{{locate.items.image}}">
+      <img class="col-lg-4 offset-2 centered" ng-src="{{locate.items.map}}" id="map">
+    </div>
   </div>
+
+</div>
+<div class="container">
+  Representative: <p>{{locate.items.fullName}}</p>
+  <p>{{locate.items.biography}}</p>
+  <p>Counties Served: {{locate.items.counties}}</p>
+  <p>First Elected: {{locate.items.elected}}</p>
 </div>
 <div name="redirect">
   <a class="btn btn-primary" href="">Your District</a>

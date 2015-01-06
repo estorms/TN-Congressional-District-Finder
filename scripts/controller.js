@@ -7,7 +7,7 @@
     options: {
       query: {
         select: 'geometry',
-        from: '1sYcr1mE6VNXK1kfVhvI4ZefLYCqZ7U3SUoTuFvZV'
+        from: '14LfN-D8Ress56kC0CSM9xQ8I7b_cL4uqT5TUW2MT',
       },
 }
   }
@@ -70,7 +70,7 @@
       a.items['twitter'] = twitter;
       a.items['phone'] = phone;
       a.items['fax'] = fax;
-      console.log(a.items);
+      console.log(data);
     })
     .error(function(err){
       console.log(err);
