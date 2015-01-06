@@ -20,6 +20,12 @@ h3 {
   background-color: #4633F2;
   margin-top: 0;
 }
+.iframed {
+  border-width: 4px;
+  border-color: darkgrey;
+  border-style: groove;
+  padding: 0 0;
+}
 #map {
   border-color: black;
   border-style: groove;

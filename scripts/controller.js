@@ -1,19 +1,19 @@
 ;(function() {
   'use strict';
- angular.module('congressApp')
-.controller('MapController', function($scope) {
-  $scope.map = { center: { latitude: 35.78528, longitude: -86.617504 }, options: { minZoom: 7, draggable: false, cursor: false}, zoom: 7, fusionlayer: {
-    showFusionTables: true,
-    options: {
-      query: {
-        select: 'geometry',
-        from: '14LfN-D8Ress56kC0CSM9xQ8I7b_cL4uqT5TUW2MT',
-      },
-}
-  }
-};
-
-})
+   angular.module('congressApp')
+// .controller('MapController', function($scope) {
+//   $scope.map = { center: { latitude: 35.78528, longitude: -86.617504 }, options: { minZoom: 7, draggable: false, cursor: false}, zoom: 7, fusionlayer: {
+//     showFusionTables: true,
+//     options: {
+//       query: {
+//         select: 'geometry',
+//         from: '14LfN-D8Ress56kC0CSM9xQ8I7b_cL4uqT5TUW2MT',
+//       },
+// }
+//   }
+// };
+//
+// })
 .controller('LocateDistrictController', function($http, $location, $routeParams) {
   var a = this;
   a.items = {};
@@ -26,8 +26,6 @@
      var lng = data.results[0].locations[0].latLng.lng;
       a.findNew(lat,lng);
       a.findCongressman(lat,lng);
-      $location.path('/new/');
-      a.clearForm();
     })
     .error(function(err){
       console.log(err);
@@ -41,6 +39,7 @@
     };
 //  use geolocation lat and lng to get district information.
   a.findNew = function(lat, lng) {
+    console.log(lat, lng);
     var begin = 'https://congress.api.sunlightfoundation.com/districts/locate?latitude=';
     var middle = '&longitude=';
     var end = '&apikey=996b297956f34029b3074b37010cf488';
@@ -48,14 +47,18 @@
     $http.get(url)
     .success(function(data){
       var district = data.results[0].state + '-' + data.results[0].district;
-      a.items['district'] = district;
+      a.items.district = district;
       a.bioPhoto(district);
-      console.log(district);
+      a.clearForm();
+      $location.path('/district/'+ district);
     })
     .error(function(err){
       console.log(err);
     });
   };
+
+
+
   a.findCongressman = function(lat, lng) {
     var begin = 'https://congress.api.sunlightfoundation.com/legislators/locate?latitude=';
     var middle = '&longitude=';
@@ -71,13 +74,13 @@
       var twitter = data.twitter_id;
       var email = data.oc_email;
       var fullName = data.first_name + " " + data.last_name ;
-      a.items['fullName'] = fullName;
-      a.items['website'] = website;
-      a.items['email'] = email;
-      a.items['youTube'] = youTube;
-      a.items['twitter'] = twitter;
-      a.items['phone'] = phone;
-      a.items['fax'] = fax;
+      a.items.fullName = fullName;
+      a.items.website = website;
+      a.items.email = email;
+      a.items.youTube = youTube;
+      a.items.twitter = twitter;
+      a.items.phone = phone;
+      a.items.fax = fax;
       console.log(data);
     })
     .error(function(err){
@@ -95,19 +98,16 @@ a.bioPhoto = function(district) {
     var elected = data.Elected;
     var image = data.Photo;
     var map = data.map;
-    a.items['biography'] = biography;
-    a.items['counties'] = counties;
-    a.items['elected'] = elected;
-    a.items['image'] = image;
-    a.items['map'] = map;
+    a.items.biography = biography;
+    a.items.counties = counties;
+    a.items.elected = elected;
+    a.items.image = image;
+    a.items.map = map;
 
   })
   .error(function(err){
     console.log(err);
   });
 };
-// a.map = function(district) {
-//    switch {district}
-// }
 });
 }());

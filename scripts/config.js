@@ -9,7 +9,7 @@
       controller: 'LocateDistrictController',
       controllerAs: 'Locate'
     })
-    .when('/new', {
+    .when('/district/:id', {
       templateUrl: 'views/congressman.html',
       controller: 'LocateDistrictController',
       controllerAs: 'Locate'
