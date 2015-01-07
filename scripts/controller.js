@@ -87,9 +87,9 @@
       console.log(err);
     });
   };
-a.bioPhoto = function(district) {
-  var firebase = 'https://congressmanfinder.firebaseio.com/district/districts/';
-  var url = firebase + district +'/' + '.json';
+a.bioPhoto = function() {
+  var url = 'https://congressmanfinder.firebaseio.com/district/districts/TN-5/.json';
+  // var url = firebase + district +'/' + '.json';
   $http.get(url)
   .success(function(data){
     data = data;
@@ -103,11 +103,31 @@ a.bioPhoto = function(district) {
     a.items.elected = elected;
     a.items.image = image;
     a.items.map = map;
-
   })
   .error(function(err){
     console.log(err);
   });
+};
+a.hit();
+a.hit = function() {
+ var aurl = $location.url();
+ var url = 'https://congress.api.sunlightfoundation.com/legislators?state=TN&district=' + dist + '&apikey=996b297956f34029b3074b37010cf488';
+ var aurlLength = aurl.length;
+ var dist = aurl.charAt(aurlLength - 1);
+ if (dist !== '/') {
+   console.log(dist);
+ } else {
+   $http.get(url)
+  .success(function(data) {
+    data = data.results[0];
+    var district = data.state + '-' + data.district;
+    a.bioPhoto(district);
+   $location.path('/district/' + district);
+  })
+  .error(function(err) {
+    console.log(err);
+});
+}
 };
 });
 }());
