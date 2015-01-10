@@ -1,22 +1,45 @@
 ;(function() {
   'use strict';
    angular.module('congressApp')
-// .controller('MapController', function($scope) {
-//   $scope.map = { center: { latitude: 35.78528, longitude: -86.617504 }, options: { minZoom: 7, draggable: false, cursor: false}, zoom: 7, fusionlayer: {
-//     showFusionTables: true,
-//     options: {
-//       query: {
-//         select: 'geometry',
-//         from: '14LfN-D8Ress56kC0CSM9xQ8I7b_cL4uqT5TUW2MT',
-//       },
-// }
-//   }
-// };
+// .controller('ChartController', function($scope) {
+//   $scope.config = {
+//     title: 'Products',
+//     tooltips: true,
+//     labels: false,
+//     mouseover: function() {},
+//     mouseout: function() {},
+//     click: function() {},
+//     legend: {
+//       display: true,
+//       //could be 'left, right'
+//       position: 'right'
+//     }
+//   };
 //
+//   $scope.data = {
+//     series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
+//     data: [{
+//       x: "Laptops",
+//       y: [100, 500, 0],
+//       tooltip: "this is tooltip"
+//     }, {
+//       x: "Desktops",
+//       y: [300, 100, 100]
+//     }, {
+//       x: "Mobiles",
+//       y: [351]
+//     }, {
+//       x: "Tablets",
+//       y: [54, 0, 879]
+//     }]
+//   };
 // })
-.controller('LocateDistrictController', function($http, $location, $routeParams) {
+.controller('LocateDistrictController', function($http, $scope, $location, $routeParams, apiGrab) {
   var a = this;
   a.items = {};
+  a.race = {};
+  a.income = {};
+
   a.findNewAddress = function(data) {
       var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
@@ -39,18 +62,15 @@
     };
 //  use geolocation lat and lng to get district information.
   a.findNew = function(lat, lng) {
-    console.log(lat, lng);
-    var begin = 'https://congress.api.sunlightfoundation.com/districts/locate?latitude=';
-    var middle = '&longitude=';
-    var end = '&apikey=996b297956f34029b3074b37010cf488';
-    var url = begin + lat + middle + lng + end;
-    $http.get(url)
+    apiGrab.findNew(lat, lng)
     .success(function(data){
+      data = data;
       var district = data.results[0].state + '-' + data.results[0].district;
+      console.log(district);
       a.items.district = district;
       a.bioPhoto(district);
-      a.clearForm();
       $location.path('/district/'+ district);
+      // a.clearForm();
     })
     .error(function(err){
       console.log(err);
@@ -60,13 +80,10 @@
 
 
   a.findCongressman = function(lat, lng) {
-    var begin = 'https://congress.api.sunlightfoundation.com/legislators/locate?latitude=';
-    var middle = '&longitude=';
-    var end = '&apikey=996b297956f34029b3074b37010cf488';
-    var url = begin + lat + middle + lng + end;
-    $http.get(url)
+    apiGrab.findCongressman(lat, lng)
     .success(function(data){
       data = data.results[0];
+      var ident = data.bioguide_id;
       var website = data.website;
       var phone = data.phone;
       var fax = data.fax;
@@ -81,16 +98,14 @@
       a.items.twitter = twitter;
       a.items.phone = phone;
       a.items.fax = fax;
-      console.log(data);
+      a.committees(ident);
     })
     .error(function(err){
       console.log(err);
     });
   };
-a.bioPhoto = function() {
-  var url = 'https://congressmanfinder.firebaseio.com/district/districts/TN-5/.json';
-  // var url = firebase + district +'/' + '.json';
-  $http.get(url)
+a.bioPhoto = function(district) {
+  apiGrab.bioPhoto(district)
   .success(function(data){
     data = data;
     var biography = data.Biography;
@@ -98,6 +113,9 @@ a.bioPhoto = function() {
     var elected = data.Elected;
     var image = data.Photo;
     var map = data.map;
+    var race = data.demographics.Race;
+    a.race.race = race;
+    console.log(race);
     a.items.biography = biography;
     a.items.counties = counties;
     a.items.elected = elected;
@@ -108,26 +126,60 @@ a.bioPhoto = function() {
     console.log(err);
   });
 };
-a.hit();
-a.hit = function() {
- var aurl = $location.url();
- var url = 'https://congress.api.sunlightfoundation.com/legislators?state=TN&district=' + dist + '&apikey=996b297956f34029b3074b37010cf488';
- var aurlLength = aurl.length;
- var dist = aurl.charAt(aurlLength - 1);
- if (dist !== '/') {
-   console.log(dist);
- } else {
-   $http.get(url)
+
+a.committees = function(ident) {
+  apiGrab.committees(ident)
+     .success(function(data) {
+       data = data.results;
+       console.log(data);
+     })
+     .error(function(err){
+       console.log(err);
+    });
+   };
+
+
+a.finderLink = function() {
+    var aurl = $location.url();
+    var aurlLength = aurl.length;
+    var dist = aurl.charAt(aurlLength - 1);
+    if (dist !== '/') {
+      var url  = 'https://congress.api.sunlightfoundation.com/legislators?state=TN&district=' + dist + '&apikey=996b297956f34029b3074b37010cf488';
+      $http.get(url)
   .success(function(data) {
     data = data.results[0];
-    var district = data.state + '-' + data.district;
-    a.bioPhoto(district);
-   $location.path('/district/' + district);
+    console.log(data);
+    var website = data.website;
+    var phone = data.phone;
+    var fax = data.fax;
+    var ident = data.bioguide_id;
+    var contact = data.contact_form;
+    var youTube = data.youtube_id;
+    var twitter = data.twitter_id;
+    var email = data.oc_email;
+    var fullName = data.first_name + " " + data.last_name ;
+    var facebook = data.facebook_id;
+    a.items.fullName = fullName;
+    a.items.website = website;
+    a.items.email = email;
+    a.items.youTube = youTube;
+    a.items.contact = contact;
+    a.items.twitter = twitter;
+    a.items.phone = phone;
+    a.items.fax = fax;
+    a.items.facebook = facebook;
+    a.items.district = district;
+     var district = 'TN-' + dist;
+     a.bioPhoto(district);
+     a.committees(ident);
+     $location.path('/district/'+ district);
   })
   .error(function(err) {
     console.log(err);
 });
 }
 };
+
+a.finderLink();
 });
 }());
