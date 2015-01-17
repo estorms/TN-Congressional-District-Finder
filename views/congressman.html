@@ -1,54 +1,24 @@
-<div class="container">
-<div class="row">
-<div class="col-sm-6"><h2>{{locate.items.district}} Congressional Representative</h2></div>
-</div>
-</div>
-<div class="container">
-<div class="row">
-<div class="col-sm-3"><h3>Representative {{locate.items.fullName}}</h3></div>
-<div class="col-sm-7"><h3>{{locate.items.district}} District Map</h3></div>
-</div>
-</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 col-md-5 col-lg-4"><img ng-src="{{locate.items.image}}" class="img-responsive"></div>
-    <!-- </div class="col-sm-3"><p>First Elected: {{locate.items.elected}}</p></div> -->
-    <div class="col-sm-8 col-md-7 col-lg-8"><img ng-src="{{locate.items.map}}" class="img-responsive"></div>
-
-        <!-- <div class="col-sm-3"><p>Counties Served: {{locate.items.counties}}</p></div> -->
+    <div class="col-sm-3 col-md-3 col-lg-3"
+    <ul>
+    <li><a ng-href="{{locate.items.contact}}">Contact {{locate.items.fullName}}</a></li>
+      <li>Phone: <a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
+      <li>Fax: {{locate.items.fax}}</li>
+      <li><a ng-href="http://facebook.com/{{locate.items.facebook}}"><img ng-src="images/facebook.png"></a></li>
+      <li><a ng-href="http://twitter.com/{{locate.items.twitter}}"><img src="images/twitter.png"></a></li>
+      <li>Visit My Website<a ng-href="http://{{locate.items.website}}">{{locate.items.website}}</a></li>
+    </ul>
+  </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 rep"><h3 class="text-center">{{locate.items.district}} Representative {{locate.items.congressSeat}} Representative {{locate.items.fullName}}</h3>
+      <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep"><p class="text-center"> First Elected: {{locate.items.elected}}</p><p class="text-center">Political Party:  {{locate.items.party}}</p><p>{{locate.items.biography}}</p></div>
+    <div class="col-sm-3 col-md-3 col-lg-3"><img src="images/tennessee-seal.png" class="img-responsive"></div>
   </div>
 </div>
 <div class="container">
 <div class="row">
-  <div class="col-sm-6 col-md-6 col-lg-6"><img ng-src="images/TN-1-Election.png" class="elec"></div>
-  <div class="col-sm-6 col-md-6 col-lg-6"><p>Biography: {{locate.items.biography}}</p></div>
-
-
-</div>
-</div>
-<div class="container">
-  <div class="row">
-  <ul>
-    <div class="col-lg-2"><li><a ng-href="https://cooper.house.gov/contact/email-me">Contact: {{locate.items.contact}}</a></li></div>
-    <div class="col-lg-2"><li><li>Phone<a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li></div>
-    <div class="col-lg-2"><li><li>Fax{{locate.items.fax}}</li></div>
-    <div class="col-lg-2"><li><li>Follow me on FaceBook<a ng-href="http://facebook.com/{{locate.items.facebook}}">www.facebook.com/{{locate.items.facebook}}</a></li></div>
-    <div class="col-lg-2"><li><li>Follow me on Twitter<a ng-href="http://twitter.com/{{locate.items.twitter}}">www.twitter.com/{{locate.items.twitter}}</a></li></div>
-    <div class="col-lg-2"><li><li>Visit My Website<a ng-href="http://{{locate.items.website}}">{{locate.items.website}}</a></li></div>
-  </ul>
-</div>
-</div>
-<div class="container">
-<div class="row">
   <div class="col-lg-5"><a class="btn btn-primary" href="#/">New Search</a></div>
-  <div class="col-lg-5"><a class="btn btn-primary" href="">Your District</a></div>
-</div>
-</div>
-<div ng-controller="ChartController">
-  <div
-  data-ac-chart="'bar'"
-  data-ac-data="data"
-  data-ac-config="config"
-  class="chart">
+  <div class="col-lg-5"><a class="btn btn-primary" href="#/district/:id/demographics">Your District</a></div>
 </div>
 </div>

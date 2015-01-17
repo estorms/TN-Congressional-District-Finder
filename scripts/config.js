@@ -14,6 +14,11 @@
       controller: 'LocateDistrictController',
       controllerAs: 'Locate'
     })
+    .when('/district/:id/demographics', {
+      templateUrl: 'views/district.html',
+      controller: 'LocateDistrictController',
+      controllerAs: 'Locate'
+    })
     .otherwise({redirectTo: '/'});
   });
 }());

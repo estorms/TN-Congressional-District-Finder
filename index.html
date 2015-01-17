@@ -12,33 +12,25 @@
 <body ng-controller="LocateDistrictController as locate">
  <div class="page-header">
  <div class="row">
- <div class="col-lg-2">
- <img class="flag" src="images/tennessee_flag.png">
- </div>
- <div class="col-lg-8">
- <h1>Tennessee Congressional District Finder</h1>
- </div>
- <div class="col-lg-2">
- <img src="images/tennessee-seal.png">
+ <div class="col-sm-12 col-md-12 col-lg-12" ><h1>Tennessee Congressional District Finder</h1></div>
  </div>
  </div>
- </div>
-
 
   <div ng-view></div>
 
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ0mm1UHnl_O-PPk4WrqWoUgT7LkmiJ00'></script>
- <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-charts/dist/angular-charts.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/lodash/dist/lodash.min.js"></script>
 <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
 <script src="scripts/main.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/controller.js"></script>
+<script src="scripts/factories.js"></script>
 
 </body>
 </html>
