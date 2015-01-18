@@ -18,11 +18,24 @@
 <td class="col-sm-3 col-md-3 col-lg-3">{{locate.race.asian}}</td>
 </tr>
 </table>
+<table class="table table-responsive text-center">
+  <tr>
+    <th>Income over $100,000</th>
+    <th>Median household income</th>
+    <th>Income below $10,000</th>
+    <th>Income between $15,000-$25,000</th>
+    <th>Income between $25,000-$100,000</th>
+    <th>Unemployment rate</th>
+  </tr>
+  <tr ng-repeat="(key,value) in locate.income">
+      <td "col-sm-3 col-md-3 col-lg-3">{{value}}</td>
+  </tr>
+</table>
 <div class="col-lg-5"><a class="btn btn-primary" href="#/district/:id">Congressman</a></div>
 </div>
 <!-- <div ng-controller="ChartController as chart">
   <div
-  data-ac-chart="'bar'"
+  data-ac-chart="'pie'"
   data-ac-data="data"
   data-ac-config="config"
   class="chart">

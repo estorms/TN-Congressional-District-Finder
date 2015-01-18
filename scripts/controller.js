@@ -2,6 +2,10 @@
   'use strict';
    angular.module('congressApp')
 // .controller('ChartController', function($scope) {
+//   $scope.$on('findNewAddress()', function(event, race) {
+//     $scope.race = race;
+//     console.log(race);
+//
 //   $scope.config = {
 //     title: 'Racial Demographics',
 //     tooltips: true,
@@ -19,27 +23,21 @@
 //   $scope.data = {
 //     series: ['White', 'Black', 'Hispanic', 'Asian'],
 //     data: [{
-//       x: "White",
-//       y: [chart.race.white],
-//       tooltip: "this is tooltip"
+//             x: $scope.race,
+//       y: [51]
 //     }, {
-//       x: "Desktops",
-//       y: [chart.race.asian]
-//     }, {
-//       x: "Mobiles",
-//       y: [351]
-//     }, {
-//       x: "Tablets",
-//       y: [54, 0, 879]
+//       x: $scope.race,
+//       y: [350]
 //     }]
 //   };
+// });
 // })
-
-.controller('LocateDistrictController', function($http, $scope, $location, $routeParams, apiGrab) {
+.controller('LocateDistrictController', function($http, $scope,$rootScope, $location, $routeParams, apiGrab) {
   var a = this;
   a.items = {};
   a.race = {};
   a.income = {};
+
   a.findNewAddress = function(data) {
       var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
@@ -84,6 +82,7 @@
       data = data.results[0];
       var ident = data.bioguide_id;
       var website = data.website;
+      console.log(website);
       var phone = data.phone;
       var fax = data.fax;
       var youTube = data.youtube_id;
@@ -119,11 +118,14 @@ a.bioPhoto = function(district) {
     var hispanic = demographic.Hispanic;
     var party = data.Party;
     a.items.party = party;
+    var incomes = data.demographics.Income;
+    var education = data.demographics.education;
+
+    a.income = incomes;
     a.race.white = white;
     a.race.black = black;
     a.race.hispanic = hispanic;
     a.race.asian= asian;
-    console.log(a.race);
     a.items.biography = biography;
     a.items.counties = counties;
     a.items.elected = elected;
