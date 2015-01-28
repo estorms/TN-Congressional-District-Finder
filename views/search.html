@@ -1,25 +1,28 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12" >
+      <h1>Tennessee Congressional District Finder</h1>
+    </div>
+  </div>
+</div>
+
 
 
 
 <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
-
-<div class="container-fluid">
-  <h3>SEARCH FOR A DISTRICT BY ADDRESS</h3>
-
-  <form class="form-inline" name="getLocate" ng-submit="getLocate.$valid &&  locate.findNewAddress()" novalidate>
-    <div class="form-group">
-      <label class="control-label">Street Address:</label>
-      <input class="form-control" id="street" type="text" ng-model="locate.newAddress.street" required>
-      <label class="control-label">City:</label>
-      <input class="form-control" id="city" type="text" ng-model="locate.newAddress.city" required>
-      <label class="control-label">State:</label>
-      <input class="form-control" id="state" type="text" ng-model="locate.newAddress.state" required>
-      <label class="control-label">Zipcode:</label>
-      <input class="form-control" id="zipcode" type="text" ng-model="locate.newAddress.zipcode" required>
-      <input type="submit" class="btn btn-primary" id="location" value="Search For Your District">
-    </div>
-  </form>
-</div>
+    <form class="form-inline center" name="getLocate" ng-submit="getLocate.$valid &&  locate.findNewAddress()" novalidate>
+      <div class="form-group">
+        <label class="control-label">Street Address:</label>
+        <input class="form-control" id="street" type="text" ng-model="locate.newAddress.street" required>
+        <label class="control-label">City:</label>
+        <input class="form-control" id="city" type="text" ng-model="locate.newAddress.city" required>
+        <label class="control-label">State:</label>
+        <input class="form-control" id="state" type="text" ng-model="locate.newAddress.state" required>
+        <label class="control-label">Zipcode:</label>
+        <input class="form-control" id="zipcode" type="text" ng-model="locate.newAddress.zipcode" required>
+        <input type="submit" class="btn btn-primary" id="location" value="Search For Your District">
+      </div>
+    </form>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-3 col-sm-offset-3 col-md-offset-3">
@@ -29,30 +32,30 @@
 </div>
 <div class="container">
 <div class="row">
-<div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 1</h3><img src="images/Tennessee1map.png" class="img-responsive distmap" ng-click="locate.finderLink('1')"></div>
-<div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 2</h3><img src="images/Tennessee2map.png" class="img-responsive distmap" ng-click="locate.finderLink('2')"></div>
+<div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 1</h3><img src="images/Tennessee1map.png" class="img-responsive distmap" ng-click="locate.finderLink('1')"></div>
+<div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 2</h3><img src="images/Tennessee2map.png" class="img-responsive distmap" ng-click="locate.finderLink('2')"></div>
 </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6  col-lg-6"><h3>Congressional District 3</h3><img src="images/Tennessee3map.png" class="img-responsive distmap" ng-click="locate.finderLink('3')"></div>
-    <div class="col-sm-6  col-lg-6"><h3>Congressional District 4</h3><img src="images/Tennessee4map.png" class="img-responsive distmap" ng-click="locate.finderLink('4')"></div>
+    <div class="col-sm-6  col-lg-6 maps"><h3 class="maplabel">Congressional District 3</h3><img src="images/Tennessee3map.png" class="img-responsive distmap" ng-click="locate.finderLink('3')"></div>
+    <div class="col-sm-6  col-lg-6 maps"><h3 class="maplabel">Congressional District 4</h3><img src="images/Tennessee4map.png" class="img-responsive distmap" ng-click="locate.finderLink('4')"></div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 5</h3><img src="images/Tennessee5map.png" class="img-responsive distmap" ng-click="locate.finderLink('5')"></div>
-    <div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 6</h3><img src="images/Tennessee6map.png" class="img-responsive distmap" ng-click="locate.finderLink('6')"></div>
+    <div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 5</h3><img src="images/Tennessee5map.png" class="img-responsive distmap" ng-click="locate.finderLink('5')"></div>
+    <div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 6</h3><img src="images/Tennessee6map.png" class="img-responsive distmap" ng-click="locate.finderLink('6')"></div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 7</h3><img src="images/Tennessee7map.png" class="img-responsive distmap" ng-click="locate.finderLink('7')"></div>
-    <div class="col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 8</h3><img src="images/Tennessee8map.png" class="img-responsive distmap" ng-click="locate.finderLink('8')"></div>
+    <div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 7</h3><img src="images/Tennessee7map.png" class="img-responsive distmap" ng-click="locate.finderLink('7')"></div>
+    <div class="col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 8</h3><img src="images/Tennessee8map.png" class="img-responsive distmap" ng-click="locate.finderLink('8')"></div>
   </div>
   <div class="container">
   <div class="row">
-    <div class="col-md-offset-3 col-sm-6 col-md-6 col-lg-6"><h3>Congressional District 9</h3><img src="images/Tennessee9map.png" class="img-responsive dist9map distmap" ng-click="locate.finderLink('9')"></div>
+    <div class="col-md-offset-3 col-sm-6 col-md-6 col-lg-6 maps"><h3 class="maplabel">Congressional District 9</h3><img src="images/Tennessee9map.png" class="img-responsive dist9map distmap" ng-click="locate.finderLink('9')"></div>
   </div>
 </div>
 </div>

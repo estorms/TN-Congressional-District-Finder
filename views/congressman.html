@@ -1,27 +1,18 @@
-<div class="container">
+<div class="page-header">
   <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 rep">
-      <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.congressSeat}} Representative {{locate.items.fullName}}</h3>
-      <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
-      <p class="text-center">Political Party:  {{locate.items.party}}</p>
-      <p>{{locate.items.biography}}</p></div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
-      <h4 class="text-center"> {{locate.items.fullName}}</h4>
-      <p class="text-center">Congressional Biography</p>
-      <img src="images/tennessee-seal.png" class="img-responsive seal">
-      <p class="text-center"> First Elected: {{locate.items.elected}}</p>
-      <h5 class="text-center"> TN Counties Represented</h5>
-      <p class="text-center">{{locate.items.counties}}</p>
-      <h5 class="text-center committees">Current Committees</h4>
-      <p class="text-center">{{locate.items.committee1}}</p>
-      <p class="text-center">{{locate.items.committee2}}</p>
-      </div>
+    <div class="col-sm-12 col-md-12 col-lg-12" >
+      <h1>Tennessee Congressional District Finder</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/district/:id/demographics">Your District</a></div>
+    <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/">New Search</a></div>
   </div>
 </div>
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
+<div class="container">
+  <div class="col-sm-2 col-md-2 col-lg-2">
     <ul>
+      <li class="text-center">Office Address:{{locate.items.address}}</li>
       <li><a ng-href="{{locate.items.contact}}" target="_blank">Contact {{locate.items.fullName}}</a></li>
       <li>Phone: <a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
       <li>Fax: {{locate.items.fax}}</li>
@@ -30,8 +21,21 @@
       <li><a ng-href="{{locate.items.website}}" target="_blank">Visit My Website</a></li>
     </ul>
   </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 rep">
+      <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.fullName}}</h3>
+      <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
+      <p class="text-center">Political Party:  {{locate.items.party}}</p>
+      <p>{{locate.items.biography}}</p></div>
+    <div class="col-sm-3 col-md-3 col-lg-3">
+      <img src="images/tennessee-seal.png" class="img-responsive seal">
+      <h4 class="text-center"> Political Profile</h4>
+      <p class="text-center">Political Party:  {{locate.items.party}}</p>
+      <p class="text-center"> First Elected: {{locate.items.elected}}</p>
+      <h5 class="text-center committees">Current Committees</h4>
+      <p class="text-center">{{locate.items.committee1}}</p>
+      <p class="text-center">{{locate.items.committee2}}</p>
+
+      </div>
+  </div>
 </div>
-</div>
-</div>
-<div class="col-lg-5"><a class="btn btn-primary" href="#/">New Search</a></div>
-<div class="col-lg-5"><a class="btn btn-primary" href="#/district/:id/demographics">Your District</a></div>

@@ -1,37 +1,6 @@
 ;(function() {
   'use strict';
    angular.module('congressApp')
-// .controller('ChartController', function($scope) {
-//   $scope.$on('findNewAddress()', function(event, race) {
-//     $scope.race = race;
-//     console.log(race);
-//
-//   $scope.config = {
-//     title: 'Racial Demographics',
-//     tooltips: true,
-//     labels: false,
-//     mouseover: function() {},
-//     mouseout: function() {},
-//     click: function() {},
-//     legend: {
-//       display: true,
-//       //could be 'left, right'
-//       position: 'right'
-//     }
-//   };
-//
-//   $scope.data = {
-//     series: ['White', 'Black', 'Hispanic', 'Asian'],
-//     data: [{
-//             x: $scope.race,
-//       y: [51]
-//     }, {
-//       x: $scope.race,
-//       y: [350]
-//     }]
-//   };
-// });
-// })
 .controller('LocateDistrictController', function($http, $scope,$rootScope, $location, $routeParams, apiGrab) {
   var a = this;
   a.items = {};
@@ -80,15 +49,18 @@
     apiGrab.findCongressman(lat, lng)
     .success(function(data){
       data = data.results[0];
+      console.log(data);
       var ident = data.bioguide_id;
       var website = data.website;
-      console.log(website);
       var phone = data.phone;
       var fax = data.fax;
       var youTube = data.youtube_id;
       var twitter = data.twitter_id;
       var email = data.oc_email;
       var fullName = data.first_name + " " + data.last_name ;
+      var address = data.office + "Independence Ave SE Washington, DC 20515";
+      a.items.address = address;
+      console.log(a.items.address);
       a.items.fullName = fullName;
       a.items.website = website;
       a.items.email = email;
@@ -120,7 +92,14 @@ a.bioPhoto = function(district) {
     a.items.party = party;
     var incomes = data.demographics.Income;
     var education = data.demographics.education;
-
+    var map = data.Map;
+    var electoral = data.Electoral;
+    var population = data.population;
+    var medianAge = data.median_age;
+    a.items.age = medianAge;
+    a.items.population = population;
+    a.items.map = map;
+    a.items.electoral = electoral;
     a.income = incomes;
     a.race.white = white;
     a.race.black = black;
@@ -176,8 +155,11 @@ a.finderLink = function(dist) {
     var fullName = data.first_name + " " + data.last_name ;
     var facebook = data.facebook_id;
     var district = 'TN' + '-' + dist;
+    var address = data.office + "Independence Ave SE Washington, DC 20515";
+    a.items.address = address;
+    console.log(address);
+    a.items.district = district;
     // var district = data.state + '-' + data.district;
-    // a.items.district = district;
     a.items.fullName = fullName;
     a.items.website = website;
     a.items.email = email;
