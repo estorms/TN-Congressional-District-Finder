@@ -8,7 +8,7 @@
   a.income = {};
 
   a.findNewAddress = function(data) {
-      var url = 'https://www.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
+      var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
     .success(function(data){
       data = data;
@@ -58,7 +58,7 @@
       var twitter = data.twitter_id;
       var email = data.oc_email;
       var fullName = data.first_name + " " + data.last_name ;
-      var address = data.office + "Independence Ave SE Washington, DC 20515";
+      var address = data.office + "  Independence Ave SE Washington, DC 20515";
       a.items.address = address;
       console.log(a.items.address);
       a.items.fullName = fullName;
@@ -91,16 +91,32 @@ a.bioPhoto = function(district) {
     var party = data.Party;
     a.items.party = party;
     var incomes = data.demographics.Income;
+    var oneHundredPlus = incomes.oneHundredPlus;
+    var poverty = incomes.below_ten_thou;
+    var median = incomes.Median_house;
+    var twenty = incomes.fifteen_twentyfive;
+    var hundred = incomes.twenty_five_hundred;
+    var unemploy = incomes.unemployment;
+    var bachelors = data.demographics.Education.bachelors;
+    var highSchool = data.demographics.Education.highSchool;
     var education = data.demographics.education;
     var map = data.Map;
+    a.income.median = median;
+    a.income.unemploy = unemploy;
+    a.income.poverty = poverty;
+    a.income.twenty = twenty;
+    a.income.hundred = hundred;
+    a.income.oneHundredPlus = oneHundredPlus;
+    a.items.bachelors = bachelors;
+    console.log(a.income);
+    a.items.highSchool = highSchool;
     var electoral = data.Electoral;
-    var population = data.population;
-    var medianAge = data.median_age;
+    var population = data.demographics.misc.population;
+    var medianAge = data.demographics.misc.median_age;
     a.items.age = medianAge;
     a.items.population = population;
     a.items.map = map;
     a.items.electoral = electoral;
-    a.income = incomes;
     a.race.white = white;
     a.race.black = black;
     a.race.hispanic = hispanic;

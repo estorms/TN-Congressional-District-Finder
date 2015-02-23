@@ -1,20 +1,22 @@
-<div class="page-header">
+<div class="jumbotron head">
   <div class="row">
     <div class="col-sm-6 col-md-12 col-lg-12" >
-      <h1>Tennessee Congressional District Finder</h1>
+      <h1 id="titler">Tennessee Congressional District Finder</h1>
     </div>
   </div>
-    <div class="row">
-      <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/district/:id">Congressman</a></div>
-      <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/">New Search</a></div>
-    </div>
+  <div class="row naver">
+    <ul class="nav nav-tabs toggler">
+    <li role="presentation"><a class="btn btn-primary toggle-button"href="#/district/:id">View Your Congressman</a></li>
+    <li role="presentation"><a class="btn btn-primary button-search" href="#/">New District Search</a><li>
+  </ul>
+  </div>
 </div>
     <div class="col-sm-12 col-md-12 col-lg-12">
       <h3 class="text-center">{{locate.items.district}} Congressional District</h3>
     </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-md-8 col-lg-8 districtmap">
+    <div class="col-sm-8 col-md-8 col-lg-8 districtmaps">
       <img src="{{locate.items.map}}" class="img-responsive"></div>
   <div class="col-sm-4 col-md-4 col-lg-4">
     <h3>District Snapshot</h3>
@@ -26,6 +28,13 @@
       <p class="text-center">{{locate.items.age}}</p>
       </div>
   </div>
+</div>
+<div <div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+    <h3 class="text-center">Population Demographics</h3>
+  </div>
+</div>
 </div>
 <div class="container">
 <div class="row">
@@ -50,15 +59,20 @@
 <table class="table table-responsive text-center">
   <legend>Household Income</legend>
   <tr>
-    <th>Income over $100,000</th>
-    <th>Median household income</th>
-    <th>Income below $10,000</th>
-    <th>Income between $15,000-$25,000</th>
-    <th>Income between $25,000-$100,000</th>
-    <th>Unemployment rate</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Median household income</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Unemployment rate</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Income below $10,000</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Income between $15,000-$25,000</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Income between $25,000-$100,000</th>
+    <th class="col-sm-2 col-md-2 col-lg-2">Income over $100,000</th>
   </tr>
-  <tr ng-repeat="(key,value) in locate.income">
-    <td>{{value}}</td>
+  <tr>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.median}}</td>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.unemploy}}</td>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.poverty}}</td>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.twenty}}</td>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.hundred}}</td>
+    <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.oneHundredPlus}}</td>
   </tr>
 </table>
 </div>

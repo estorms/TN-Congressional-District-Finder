@@ -1,17 +1,45 @@
 html, body {
   height: 100%;
 }
-h1 {
+#titler {
   text-align: center;
+  vertical-align: top;
   opacity: 1.0;
   font-weight: bold;
-  color: white;
+  text-color: white;
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 34px;
 }
 h3 {
   text-align: center;
 }
+.button-search {
+  background-color: black;
+}
+.toggle-button {
+  background-color: slategrey;
+  margin-left: 10px;
+}
+.click-direction {
+  color: white;
+}
+.control-label {
+  color: white;
+}
 .buttons {
   vertical-align: bottom;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  margin-bottom: 0;
+}
+.toggler {
+  vertical-align: bottom;
+  margin-bottom: 0;
+}
+.rock {
+  margin-bottom: 0;
   text-align: center;
 }
 .center {
@@ -34,7 +62,7 @@ h3 {
 #state {
   width: 125px;
 }
-.page-header {
+/*{
   margin: 0;
   height: 200px;
   background-color: black;
@@ -42,13 +70,27 @@ h3 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
+}*/
 .jumbotron {
   height: 100%;
   margin: 0 0;
   width: 100%;
   background-color: black;
   border-top: 0;
+}
+.head {
+  margin: 0;
+  height: 200px;
+  background-color: black;
+  background-image: url('/images/header1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+}
+.naver {
+  vertical-align: bottom;
+  margin-bottom: 0;
 }
 .dist9map {
   margin: 0 auto;
@@ -63,7 +105,20 @@ h3 {
 .committees {
   font-weight: bold;
 }
-
+.contacting {
+  background-color: green;
+  min-height: 300px;
+  margin-right: 0;
+}
+.contact-info li {
+  text-decoration: none;
+  text-align: left;
+  margin-left: 0;
+  list-style-type: none;
+}
+.pobio {
+  background-color: lightblue;
+}
 .iframed {
   border-width: 4px;
   border-color: darkgrey;
@@ -82,6 +137,7 @@ h3 {
 }
 .rep {
   background-color: grey;
+  min-height: 300px;
 }
 .districtmap {
   border-color: black;

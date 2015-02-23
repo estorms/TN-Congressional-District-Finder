@@ -1,41 +1,43 @@
-<div class="page-header">
+<div class="jumbotron head">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12" >
-      <h1>Tennessee Congressional District Finder</h1>
+      <h1 class="text-responsive" id="titler">Tennessee Congressional District Finder</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/district/:id/demographics">Your District</a></div>
-    <div class="col-lg-6 buttons"><a class="btn btn-primary" href="#/">New Search</a></div>
+  <div class="row naver">
+    <ul class="nav nav-tabs toggler">
+    <li role="presentation" ><a class="btn btn-primary toggle-button"href="#/district/:id/demographics">View Your District</a></li>
+    <li role="presentation"><a class="btn btn-primary button-search" href="#/">New District Search</a><li>
+  </ul>
   </div>
 </div>
 <div class="container">
-  <div class="col-sm-2 col-md-2 col-lg-2">
-    <ul>
-      <li class="text-center">Office Address:{{locate.items.address}}</li>
-      <li><a ng-href="{{locate.items.contact}}" target="_blank">Contact {{locate.items.fullName}}</a></li>
-      <li>Phone: <a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
-      <li>Fax: {{locate.items.fax}}</li>
-      <li><a ng-href="http://facebook.com/{{locate.items.facebook}}" target="_blank"><img ng-src="images/facebook.png"></a></li>
-      <li><a ng-href="http://twitter.com/{{locate.items.twitter}}" target="_blank"><img src="images/twitter.png"></a></li>
-      <li><a ng-href="{{locate.items.website}}" target="_blank">Visit My Website</a></li>
-    </ul>
-  </div>
+  <div class="col-sm-3 col-md-3 col-lg-3 pobio">
+    <img src="images/tennessee-seal.png" class="img-responsive seal">
+    <h4 class="text-center"> Political Profile</h4>
+    <p class="text-center">Political Party:  {{locate.items.party}}</p>
+    <p class="text-center"> First Elected: {{locate.items.elected}}</p>
+    <h4 class="text-center committees">Current Committees</h4>
+    <p class="text-center">{{locate.items.committee1}}</p>
+    <p class="text-center">{{locate.items.committee2}}</p>
+    </div>
   <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 rep">
+    <div class="col-sm-5 col-md-5 col-lg-5 col-lg-offset-.5 rep">
       <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.fullName}}</h3>
       <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
-      <p class="text-center">Political Party:  {{locate.items.party}}</p>
       <p>{{locate.items.biography}}</p></div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
-      <img src="images/tennessee-seal.png" class="img-responsive seal">
-      <h4 class="text-center"> Political Profile</h4>
-      <p class="text-center">Political Party:  {{locate.items.party}}</p>
-      <p class="text-center"> First Elected: {{locate.items.elected}}</p>
-      <h5 class="text-center committees">Current Committees</h4>
-      <p class="text-center">{{locate.items.committee1}}</p>
-      <p class="text-center">{{locate.items.committee2}}</p>
-
+      <div class="col-sm-3 col-md-3 col-lg-3 contacting">
+        <h3>Contact {{locate.items.fullName}}</h3>
+        <ul class="contact-info">
+          <li class="text-left">Office:<br>{{locate.items.address}}</li>
+          <li><a ng-href="{{locate.items.contact}}" target="_blank">Contact {{locate.items.fullName}}</a></li>
+          <li>Phone <br> <a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
+          <li>Fax <br> {{locate.items.fax}}</li>
+          <li><a ng-href="http://facebook.com/{{locate.items.facebook}}" target="_blank"><img ng-src="images/facebook.png"></a></li>
+          <li><a ng-href="http://twitter.com/{{locate.items.twitter}}" target="_blank"><img src="images/twitter.png"></a></li>
+          <li><a ng-href="{{locate.items.website}}" target="_blank">Visit My Website</a></li>
+        </ul>
       </div>
+
   </div>
 </div>
