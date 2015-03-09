@@ -11,31 +11,32 @@
   </ul>
   </div>
 </div>
-<div class="container">
+<div class="container ">
+  <div class="row groupings">
   <div class="col-sm-3 col-md-3 col-lg-3 pobio">
     <img src="images/tennessee-seal.png" class="img-responsive seal">
-    <h4 class="text-center"> Political Profile</h4>
-    <p class="text-center">Political Party:  {{locate.items.party}}</p>
-    <p class="text-center"> First Elected: {{locate.items.elected}}</p>
-    <h4 class="text-center committees">Current Committees</h4>
-    <p class="text-center">{{locate.items.committee1}}</p>
-    <p class="text-center">{{locate.items.committee2}}</p>
+    <h3 class="text-center profiles"> Political Profile</h3>
+    <p class="text-center profiled">Political Party:  {{locate.items.party}}</p>
+    <p class="text-center profiled"> First Elected: {{locate.items.elected}}</p>
+    <h4 class="text-center committees profiled">Current Committees</h4>
+    <p class="text-center profiled">{{locate.items.committee1}}</p>
+    <p class="text-center profiled">{{locate.items.committee2}}</p>
     </div>
-  <div class="row">
-    <div class="col-sm-5 col-md-5 col-lg-5 col-lg-offset-.5 rep">
+    <div class="col-sm-6 col-md-6 col-lg-6">
       <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.fullName}}</h3>
       <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
       <p>{{locate.items.biography}}</p></div>
       <div class="col-sm-3 col-md-3 col-lg-3 contacting">
-        <h3>Contact {{locate.items.fullName}}</h3>
+        <h3 class="contact-header text-center">Contact {{locate.items.fullName}}</h3>
         <ul class="contact-info">
-          <li class="text-left">Office:<br>{{locate.items.address}}</li>
-          <li><a ng-href="{{locate.items.contact}}" target="_blank">Contact {{locate.items.fullName}}</a></li>
-          <li>Phone <br> <a ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
-          <li>Fax <br> {{locate.items.fax}}</li>
-          <li><a ng-href="http://facebook.com/{{locate.items.facebook}}" target="_blank"><img ng-src="images/facebook.png"></a></li>
-          <li><a ng-href="http://twitter.com/{{locate.items.twitter}}" target="_blank"><img src="images/twitter.png"></a></li>
-          <li><a ng-href="{{locate.items.website}}" target="_blank">Visit My Website</a></li>
+          <li class="text-center office">Washington Office</li>
+          <li class="address">{{locate.items.address}}</li>
+          <li class="phone">Phone: <a class="phoneurl" ng-href="tel://{{locate.items.phone}}">{{locate.items.phone}}</a></li>
+          <li class="fax">Fax: {{locate.items.fax}}</li>
+          <li><a ng-href="http://facebook.com/{{locate.items.facebook}}" target="_blank"><img class="facebook" ng-src="images/facebook.png"></a>
+          <a ng-href="http://twitter.com/{{locate.items.twitter}}" target="_blank"><img class="twitter" src="images/twitter1.png"></a></li>
+          <li><a ng-href="{{locate.items.website}}" target="_blank"><img class="website" src="images/websitelink1.png"></a>
+          <a ng-href="{{locate.items.contact}}" target="_blank"><img class="email" src="images/email.png"></a></li>
         </ul>
       </div>
 

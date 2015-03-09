@@ -7,6 +7,7 @@
   a.race = {};
   a.income = {};
 
+
   a.findNewAddress = function(data) {
       var url = 'https://open.mapquestapi.com/geocoding/v1/address?key=Fmjtd%7Cluurn1uy2u%2C8s%3Do5-9wysd4&inFormat=json&json={"location":{"street": ' + a.newAddress.street +',"city": ' + a.newAddress.city +',"state": ' + a.newAddress.state +',"postalCode": ' + a.newAddress.zipcode +'}}';
     $http.get(url)
@@ -110,13 +111,14 @@ a.bioPhoto = function(district) {
     a.items.bachelors = bachelors;
     console.log(a.income);
     a.items.highSchool = highSchool;
-    var electoral = data.Electoral;
+    var electorals = data.electionResults;
+    var electedBy = electorals.Elected;
     var population = data.demographics.misc.population;
     var medianAge = data.demographics.misc.median_age;
     a.items.age = medianAge;
     a.items.population = population;
     a.items.map = map;
-    a.items.electoral = electoral;
+    a.items.electedBy = electedBy;
     a.race.white = white;
     a.race.black = black;
     a.race.hispanic = hispanic;
@@ -171,7 +173,7 @@ a.finderLink = function(dist) {
     var fullName = data.first_name + " " + data.last_name ;
     var facebook = data.facebook_id;
     var district = 'TN' + '-' + dist;
-    var address = data.office + "Independence Ave SE Washington, DC 20515";
+    var address = data.office + " Independence Ave SE Washington, DC 20515";
     a.items.address = address;
     console.log(address);
     a.items.district = district;
