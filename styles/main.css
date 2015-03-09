@@ -152,7 +152,7 @@ h3 {
 }
 .seal {
   margin: 0 auto;
-  background-color: black;
+  background-color: 	#0A0A0F;
 }
 .committees {
   font-weight: bold;
@@ -234,13 +234,23 @@ h3 {
   width: 100%;
   height: 100%;
 }
+#new {
+  background-color: black;
+}
 th {
   text-align: center;
+  background-color: white;
 }
 td {
   display: inline-block;
+  background-color: white;
 }
-
+.county-info {
+  margin-left: 0;
+}
+.districtcolor {
+  color: white;
+}
 h2 {
   margin: auto;
 }

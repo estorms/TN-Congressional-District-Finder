@@ -11,30 +11,20 @@
   </ul>
   </div>
 </div>
+<div class="jumbotron" id="new">
     <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2  col-lg-8 col-lg-offset-2">
-      <h3 class="text-left">{{locate.items.district}} Congressional District</h3>
+      <h3 class="text-left districtcolor">{{locate.items.district}} Congressional District</h3>
     </div>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-md-8 col-lg-8 districtmaps">
       <img src="{{locate.items.map}}" class="img-responsive"></div>
-  <div class="col-sm-4 col-md-4 col-lg-4">
-    <h3>District Snapshot</h3>
-      <h5 class="text-center"> TN Counties Represented</h5>
-      <p class="text-center">{{locate.items.counties}}</p>
-      <h5 class="text-center">Total Population</h5>
-      <p class="text-center">{{locate.items.population}}</p>
-      <h5 class="text-center">Median Age</h5>
-      <p class="text-center">{{locate.items.age}}</p>
+  <div class="col-sm-3 col-md-3 col-lg-3 county-info">
+    <h3 class="districtcolor">District Snapshot</h3>
+      <h5 class="text-center districtcolor"> TN Counties Represented</h5>
+      <p class="text-center districtcolor">{{locate.items.counties}}</p>
       </div>
   </div>
-</div>
-<div <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-    <h3 class="text-center">Population Demographics</h3>
-  </div>
-</div>
 </div>
 <div class="container">
 <div class="row">
@@ -42,12 +32,16 @@
 <table class="table table-inline table-responsive text-center">
   <Legend>Population Demographics</legend>
 <tr>
+<th class="col-sm-2 col-md-2 col-lg-2">Total Population</th>
+<th class="col-sm-2 col-md-2 col-lg-2">Median Age</th>
 <th class="col-sm-2 col-md-2 col-lg-2">White</th>
 <th class="col-sm-2 col-md-2 col-lg-2">Black</th>
 <th class="col-sm-2 col-md-2 col-lg-2">Hispanic</th>
 <th class="col-sm-2 col-md-2 col-lg-2">Asian</th>
 </tr>
 <tr>
+  <td  class="col-sm-2 col-md-2 col-lg-2">{{locate.items.population}}</td>
+  <td  class="col-sm-2 col-md-2 col-lg-2">{{locate.items.age}}</td>
 <td class="col-sm-2 col-md-2 col-lg-2">{{locate.race.white}}</td>
 <td class="col-sm-2 col-md-2 col-lg-2">{{locate.race.black}}</td>
 <td class="col-sm-2 col-md-2 col-lg-2">{{locate.race.hispanic}}</td>
@@ -75,6 +69,7 @@
     <td class="col-sm-2 col-md-2 col-lg-2">{{locate.income.oneHundredPlus}}</td>
   </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
