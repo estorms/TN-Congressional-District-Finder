@@ -2,6 +2,12 @@ html, body {
   height: 100%;
 }
 
+
+* {
+
+  font-family: 'Gudea', sans-serif;
+}
+
 #titler, #titles, #titled {
   text-align: center;
   vertical-align: top;
@@ -47,6 +53,13 @@ html, body {
     margin-top: -30px;
   }
 }
+@media (max-width: 500px) {
+  .demos  {
+  overflow-x: scroll;
+  max-width: 100%;
+}
+}
+
 .groupings {
   min-height: 580px;
 }
@@ -158,7 +171,7 @@ h3 {
   font-weight: bold;
 }
 .contacting {
-  background-color: #4C0000;
+  background-color: #F1F1F1;
   min-height: 300px;
   margin-right: 0;
 }
@@ -257,5 +270,6 @@ h2 {
  .pobio, .contacting {
   min-height: 630px;
 }
+
 .container-fluid { margin: 20px 100px;}
 .angular-google-map, .angular-google-map-container { height: 300px; }

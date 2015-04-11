@@ -13,7 +13,11 @@
 </div>
 <div class="container ">
   <div class="row groupings">
-  <div class="col-sm-3 col-md-3 col-lg-3 pobio">
+    <div class="col-sm-6 col-sm-push-3 col-md-6 col-lg-6">
+      <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.fullName}}</h3>
+      <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
+      <p>{{locate.items.biography}}</p></div>
+  <div class="col-sm-3 col-sm-pull-6 col-md-3 col-lg-3 pobio">
     <img src="images/tennessee-seal.png" class="img-responsive seal">
     <h3 class="text-center profiles"> Political Profile</h3>
     <p class="text-center profiled">Political Party:  {{locate.items.party}}</p>
@@ -21,11 +25,7 @@
     <h4 class="text-center committees profiled">Current Committees</h4>
     <p class="text-center profiled">{{locate.items.committee1}}</p>
     <p class="text-center profiled">{{locate.items.committee2}}</p>
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
-      <h3 class="text-center">{{locate.items.district}} Representative {{locate.items.fullName}}</h3>
-      <img ng-src="{{locate.items.image}}" class="img-responsive center-block rep">
-      <p>{{locate.items.biography}}</p></div>
+  </div>
       <div class="col-sm-3 col-md-3 col-lg-3 contacting">
         <h3 class="contact-header text-center">Contact {{locate.items.fullName}}</h3>
         <ul class="contact-info">
@@ -36,7 +36,7 @@
           <li><a ng-href="http://facebook.com/{{locate.items.facebook}}" target="_blank"><img class="facebook" ng-src="images/facebook.png"></a>
           <a ng-href="http://twitter.com/{{locate.items.twitter}}" target="_blank"><img class="twitter" src="images/twitter1.png"></a></li>
           <li><a ng-href="{{locate.items.website}}" target="_blank"><img class="website" src="images/websitelink1.png"></a>
-          <a ng-href="{{locate.items.contact}}" target="_blank"><img class="email" src="images/email.png"></a></li>
+          <a ng-href="{{locate.items.contact}}" target="_blank"><img class="email" src="images/email-marketing-button2.png"></a></li>
         </ul>
       </div>
 
